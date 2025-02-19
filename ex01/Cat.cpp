@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:22:31 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 15:12:56 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:53:57 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cat::Cat() {
 	std::cout << type << " constructed" << std::endl;
 }
 
-Cat::Cat(const Cat &other) : Animal() {
+Cat::Cat(const Cat &other) : Animal(other) {
     std::cout << type << " copy constructed" << std::endl;
 	type = other.type;
 	_brain = new Brain(*other._brain);
