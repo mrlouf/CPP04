@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:22:31 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 14:56:47 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:12:56 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Cat::Cat(const Cat &other) : Animal() {
 }
 
 Cat &Cat::operator=(const Cat &other) {
+	std::cout << type << " assignment operator" << std::endl;
     if (this != &other) {
         Animal::operator=(other);
         type = other.type;

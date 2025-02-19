@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:04:38 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 11:33:28 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:09:56 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define DOG_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal {
 	private:
+		Brain * _brain;
 	protected:
 	public:
 		Dog();
@@ -25,6 +27,8 @@ class Dog : public Animal {
 		~Dog();
 
 		void makeSound() const;
+
+		Brain* getBrain() const;
 };
 
 #endif
