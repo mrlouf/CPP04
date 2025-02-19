@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:17:40 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 15:31:15 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:25:41 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ int main()
 		}
 		for (int i = 10; i < 20; i++) {
 			array[i] = new Dog();
+		}
+
+		for (int i = 0; i < 20; i++) {
+			array[i]->makeSound();
 		}
 
 		for (int i = 0; i < 20; i++) {
