@@ -6,14 +6,13 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:31:00 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 12:58:21 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:27:49 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/MateriaSource.hpp"
 
 MateriaSource::MateriaSource() {
-	std::cout << "MateriaSource constructor" << std::endl;
 	for (int i = 0; i < 4; i++)
 		materia[i] = NULL;
 }
@@ -23,7 +22,6 @@ MateriaSource::MateriaSource(const MateriaSource &materiaSource) {
 }
 
 MateriaSource::~MateriaSource() {
-	std::cout << "MateriaSource destructor" << std::endl;
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {

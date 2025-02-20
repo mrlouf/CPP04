@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:50:21 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 14:14:20 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:28:09 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../inc/AMateria.hpp"
 
 Character::Character() {
-	std::cout << "Character constructor" << std::endl;
 	_name = "Anonymous";
 	for (int i = 0; i < 4; i++) {
 		_inventory[i] = NULL;
@@ -22,7 +21,6 @@ Character::Character() {
 }
 
 Character::Character(std::string name) {
-	std::cout << "Character constructor" << std::endl;
 	_name = name;
 	for (int i = 0; i < 4; i++) {
 		_inventory[i] = NULL;
@@ -30,12 +28,10 @@ Character::Character(std::string name) {
 }
 
 Character::Character(const Character &character) {
-	std::cout << "Character copy constructor" << std::endl;
 	*this = character;
 }
 
 Character::~Character() {
-	std::cout << "Character destructor" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		if (_inventory[i] != NULL) {
 			delete _inventory[i];
@@ -44,7 +40,6 @@ Character::~Character() {
 }
 
 Character &Character::operator=(const Character &character) {
-	std::cout << "Character assignment operator" << std::endl;
 	if (this != &character) {
 		_name = character._name;
 		for (int i = 0; i < 4; i++) {

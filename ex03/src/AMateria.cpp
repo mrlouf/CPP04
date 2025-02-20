@@ -13,7 +13,7 @@
 #include "../inc/AMateria.hpp"
 
 AMateria::AMateria() {
-	std::cout << "Default AMateria constructed" << std::endl;
+	type = "default";
 }
 
 AMateria::AMateria(const AMateria& other) {
@@ -27,11 +27,10 @@ AMateria &AMateria::operator=(AMateria const &other) {
 }
 
 AMateria::~AMateria() {
-	std::cout << "AMateria destroyed" << std::endl;
 }
 
-AMateria::AMateria(std::string const &type) {
-	this->type = type;
+AMateria::AMateria(std::string const &other) {
+	this->type = other;
 }
 
 std::string const &AMateria::getType() const {
@@ -40,5 +39,4 @@ std::string const &AMateria::getType() const {
 
 void AMateria::use(ICharacter& target) {
 	(void)target;
-	std::cout << "AMateria used" << std::endl;
 }
