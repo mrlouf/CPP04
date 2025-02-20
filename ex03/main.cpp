@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:36:18 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 15:47:10 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:18:30 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,44 @@ int main()
 
 		delete bob;
 		delete me;
+		delete src;
+	}
+	{
+		std::cout << "\n\033[31mUnequipping non-equipped Materia\033[0m\n" << std::endl;
+
+		IMateriaSource *src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+		ICharacter *me = new Character("me");
+
+		me->unequip(0);	// Unequip non-equipped Materia
+		
+		delete me;
+		delete src;
+	}
+	{
+		std::cout << "\n\033[31mCloning Character\033[0m\n" << std::endl;
+
+		IMateriaSource *src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+		ICharacter *me = new Character("me");
+		AMateria *tmp;
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+
+		// Copy of 'me' using dynamic cast since ICharacter are not instanciatable
+		ICharacter *you = new Character(*dynamic_cast<Character*>(me));
+		delete me;
+
+		ICharacter *bob = new Character("bob");
+		you->use(0, *bob);
+		you->use(1, *bob);
+
+		delete bob;
+		delete you;
 		delete src;
 	}
 

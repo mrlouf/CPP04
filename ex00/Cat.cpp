@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:22:31 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 11:37:56 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:20:04 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const {
-	std::cout << type << " goes meow-meow 🐈‍⬛" << std::endl;
+	std::cout << type << " goes meow-meow 🐈‍" << std::endl;
 }

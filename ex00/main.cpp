@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:17:40 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 12:44:34 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:28:41 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ int	main()
 		}
 		j->makeSound();
 		delete j; // incomplete destruction/undefined behaviour if lack of virtual destructor in WrongAnimal!
+		const WrongCat *c = new(std::nothrow) WrongCat();
+		if (!c)
+		{
+			delete c;
+			return (1);
+		}
+		c->WrongCat::makeSound();
+		delete c;
 	}
 
 	return (0);

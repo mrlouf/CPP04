@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 12:01:26 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 12:05:57 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:27:05 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class WrongCat : public WrongAnimal {
 		WrongCat(const WrongCat &other);
 		WrongCat &operator=(const WrongCat &other);
 		~WrongCat();
+
+		void makeSound() const;
 };
 
 #endif
