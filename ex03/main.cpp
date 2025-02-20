@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:36:18 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 16:18:30 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:36:06 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int main()
 		delete src;
 	}
 	{
-		std::cout << "\n\033[31mCloning Character\033[0m\n" << std::endl;
+		std::cout << "\n\033[31mCloning Character and mixed test\033[0m\n" << std::endl;
 
 		IMateriaSource *src = new MateriaSource();
 		src->learnMateria(new Ice());
@@ -126,6 +126,7 @@ int main()
 		me->equip(tmp);
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
+		me->equip(tmp->clone());
 
 		// Copy of 'me' using dynamic cast since ICharacter are not instanciatable
 		ICharacter *you = new Character(*dynamic_cast<Character*>(me));
@@ -134,6 +135,14 @@ int main()
 		ICharacter *bob = new Character("bob");
 		you->use(0, *bob);
 		you->use(1, *bob);
+		you->use(2, *bob);
+		you->use(3, *bob);
+
+		you->unequip(0);
+		you->unequip(1);
+		you->unequip(2);
+		you->unequip(3);
+		you->unequip(30);
 
 		delete bob;
 		delete you;

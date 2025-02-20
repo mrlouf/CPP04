@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:17:40 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 16:25:41 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:48:49 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,16 @@ int main()
 	delete j;//should not create a leak
 	delete i;
 	}
+	{
+	std::cout << std::endl;
+	std::cout << "\033[1;31mShallow copy Test\033[0m" << std::endl;
 
+	Dog basic;
+		{
+		Dog copy = basic;
+		}
+		basic.makeSound();
+	}
 	{
 	std::cout << std::endl;
 	std::cout << "\033[1;31mBrain & ideas Test w/cat\033[0m" << std::endl;
@@ -45,15 +54,16 @@ int main()
 	C->getBrain()->setIdea("Meow", 7);
 	std::cout << "Original Idea 8 = \"" << C->getBrain()->getIdea(7) << "\"" << std::endl;
 
-	Cat Copy = *C;
+	Cat *Copy = new Cat(*C);
 
-	std::cout << "Copy Idea 8 = \"" << Copy.getBrain()->getIdea(7) << "\"" << std::endl;
-	Copy.getBrain()->setIdea("MeowMeowww", 7);
-	std::cout << "Copy Idea 8 changed" << std::endl;
-	std::cout << "Copy Idea 8 = \"" << Copy.getBrain()->getIdea(7) << "\"" << std::endl;
-
-	std::cout << "Original Idea 8 = \"" << C->getBrain()->getIdea(7) << "\"" << std::endl;
 	delete C;
+
+	std::cout << "Copy Idea 8 = \"" << Copy->getBrain()->getIdea(7) << "\"" << std::endl;
+	Copy->getBrain()->setIdea("MeowMeowww", 7);
+	std::cout << "Copy Idea 8 changed" << std::endl;
+	std::cout << "Copy Idea 8 = \"" << Copy->getBrain()->getIdea(7) << "\"" << std::endl;
+
+	delete Copy;
 	}
 
 	{
