@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:49:23 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 14:38:27 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:25:49 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 class Character : public ICharacter
 {
 	private:
-		std::string	_name;
-		AMateria 	*_inventory[4];
+		std::string		_name;
+		AMateria		*_inventory[4];
+		AMateria		**_floor;
+		unsigned int	_floor_size;
 	public:
 		Character();
 		Character(std::string name);

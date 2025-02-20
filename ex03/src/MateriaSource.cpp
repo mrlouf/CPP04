@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:31:00 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 15:04:17 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:14:19 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {
 }
 
 void MateriaSource::learnMateria(AMateria *m) {
-	for (int i = 0; i < 4; i++) {
-		if (materia[i] && materia[i]->getType() == m->getType()) {
-			delete m;
-			return;
-		}
-	}
 	for (int i = 0; i < 4; i++) {
 		if (materia[i] == NULL) {
 			materia[i] = m;

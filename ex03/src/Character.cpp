@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:50:21 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 15:02:11 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:46:20 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 Character::Character() {
 	_name = "Anonymous";
+	_floor_size = 0;
+	_floor = new AMateria*[_floor_size + 1];
 	for (int i = 0; i < 4; i++) {
 		_inventory[i] = NULL;
 	}
@@ -22,6 +24,8 @@ Character::Character() {
 
 Character::Character(std::string name) {
 	_name = name;
+	_floor_size = 0;
+	_floor = new AMateria*[_floor_size + 1];
 	for (int i = 0; i < 4; i++) {
 		_inventory[i] = NULL;
 	}
@@ -37,11 +41,17 @@ Character::~Character() {
 			delete _inventory[i];
 		}
 	}
+	for (unsigned int i = 0; i < _floor_size; i++) {
+			delete _floor[i];	// Delete floor, ie. inventory that was unequipped
+	}
+	delete[] _floor;
 }
 
 Character &Character::operator=(const Character &character) {
 	if (this != &character) {
 		_name = character._name;
+		_floor_size = character._floor_size;
+		_floor = new AMateria*[_floor_size];
 		for (int i = 0; i < 4; i++) {
 			if (_inventory[i])
 				delete _inventory[i];	// Delete old inventory
@@ -49,6 +59,10 @@ Character &Character::operator=(const Character &character) {
 		for (int i = 0; i < 4; i++) {
 			_inventory[i] = character._inventory[i]->clone();	// Copy inventory from other character
 		}
+				for (unsigned int i = 0; i < 4; i++) {
+			_floor[i] = character._floor[i]->clone();	// Copy floor also
+		}
+
 	}
 	return *this;
 }
@@ -67,8 +81,18 @@ void Character::equip(AMateria *m) {
 }
 
 void Character::unequip(int idx) {
-	(void)idx;
-	// TODO: implement unequip
+	if (idx >= 0 && idx < 4) {
+		AMateria **tmp = new AMateria*[_floor_size + 1];
+		for (unsigned int i = 0; i < _floor_size; i++) {
+			tmp[i] = _floor[i]->clone();
+			delete _floor[i];
+		}
+		delete[] _floor;
+		tmp[_floor_size] = _inventory[idx];
+		_floor_size++;
+		_floor = tmp;
+		_inventory[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter &target) {
