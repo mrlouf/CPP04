@@ -16,18 +16,29 @@ AMateria::AMateria() {
 	std::cout << "Default AMateria constructed" << std::endl;
 }
 
-AMateria::AMateria(const AMateria& other) {}
+AMateria::AMateria(const AMateria& other) {
+	*this = other;
+}
 
-AMateria &AMateria::operator=(AMateria const &other) {}
+AMateria &AMateria::operator=(AMateria const &other) {
+	if (this != &other)
+		type = other.type;
+	return *this;
+}
 
 AMateria::~AMateria() {
 	std::cout << "AMateria destroyed" << std::endl;
 }
 
-AMateria::AMateria(std::string const &type) {}
+AMateria::AMateria(std::string const &type) {
+	this->type = type;
+}
 
-std::string const &AMateria::getType() const {}
+std::string const &AMateria::getType() const {
+	return type;
+}
 
-AMateria* AMateria::clone() const {}
-
-void AMateria::use(ICharacter& target) {}
+void AMateria::use(ICharacter& target) {
+	(void)target;
+	std::cout << "AMateria used" << std::endl;
+}

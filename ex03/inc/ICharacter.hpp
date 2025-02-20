@@ -6,14 +6,15 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:50:16 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/19 17:04:44 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:51:24 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-# include <string> 
+# include <string>
+# include <iostream>
 
 class AMateria;
 

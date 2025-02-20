@@ -12,12 +12,20 @@ RM			= rm -fr
 
 # -=-=-=-=-    FILES -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
-SRC 		= 	main.cpp			\
-				src/AMateria.cpp	\
+SRC 		= 	main.cpp				\
+				src/AMateria.cpp		\
+				src/Character.cpp		\
+				src/MateriaSource.cpp	\
+				src/Cure.cpp			\
+				src/Ice.cpp
 
 
-HEADERS		=	inc/AMateria.hpp	\
-				inc/ICharacter.hpp	\
+HEADERS		=	inc/AMateria.hpp		\
+				inc/ICharacter.hpp		\
+				inc/Character.hpp		\
+				inc/MateriaSource.hpp	\
+				inc/Cure.hpp			\
+				inc/Ice.hpp
 
 OBJDIR		= .obj
 OBJS		= $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
