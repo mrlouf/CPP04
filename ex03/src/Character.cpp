@@ -6,11 +6,12 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:50:21 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 12:50:23 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:14:20 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Character.hpp"
+#include "../inc/AMateria.hpp"
 
 Character::Character() {
 	std::cout << "Character constructor" << std::endl;
@@ -35,13 +36,24 @@ Character::Character(const Character &character) {
 
 Character::~Character() {
 	std::cout << "Character destructor" << std::endl;
+	for (int i = 0; i < 4; i++) {
+		if (_inventory[i] != NULL) {
+			delete _inventory[i];
+		}
+	}
 }
 
 Character &Character::operator=(const Character &character) {
 	std::cout << "Character assignment operator" << std::endl;
 	if (this != &character) {
 		_name = character._name;
-		// TODO: deep copy of inventory too
+		for (int i = 0; i < 4; i++) {
+			if (_inventory[i])
+				delete _inventory[i];	// delete old inventory
+		}
+		for (int i = 0; i < 4; i++) {
+			_inventory[i] = character._inventory[i];	// copy inventory from other character
+		}
 	}
 	return *this;
 }
@@ -51,8 +63,12 @@ std::string const &Character::getName() const {
 }
 
 void Character::equip(AMateria *m) {
-	(void)m;
-	// TODO: implement equip
+	for (int i = 0; i < 4; i++) {
+		if (_inventory[i] == NULL) {
+			_inventory[i] = m;
+			break;
+		}
+	}
 }
 
 void Character::unequip(int idx) {
@@ -61,7 +77,7 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-	(void)idx;
-	(void)target;
-	// TODO: implement use
+	if (idx >= 0 && idx < 4 && _inventory[idx] != NULL) {
+		_inventory[idx]->use(target);
+	}
 }
