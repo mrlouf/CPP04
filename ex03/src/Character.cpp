@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 11:50:21 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 14:28:09 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:02:11 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ Character &Character::operator=(const Character &character) {
 		_name = character._name;
 		for (int i = 0; i < 4; i++) {
 			if (_inventory[i])
-				delete _inventory[i];	// delete old inventory
+				delete _inventory[i];	// Delete old inventory
 		}
 		for (int i = 0; i < 4; i++) {
-			_inventory[i] = character._inventory[i];	// copy inventory from other character
+			_inventory[i] = character._inventory[i]->clone();	// Copy inventory from other character
 		}
 	}
 	return *this;
@@ -61,7 +61,7 @@ void Character::equip(AMateria *m) {
 	for (int i = 0; i < 4; i++) {
 		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
-			break;
+			return;
 		}
 	}
 }

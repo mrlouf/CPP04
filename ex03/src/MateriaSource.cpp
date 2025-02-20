@@ -6,7 +6,7 @@
 /*   By: nponchon <nponchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:31:00 by nponchon          #+#    #+#             */
-/*   Updated: 2025/02/20 14:27:49 by nponchon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:04:17 by nponchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ MateriaSource::MateriaSource(const MateriaSource &materiaSource) {
 }
 
 MateriaSource::~MateriaSource() {
+	for (int i = 0; i < 4; i++) {
+		if (this->materia[i])
+			delete this->materia[i];
+	}
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {
@@ -34,13 +38,26 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {
 }
 
 void MateriaSource::learnMateria(AMateria *m) {
-	(void)m;
+	for (int i = 0; i < 4; i++) {
+		if (materia[i] && materia[i]->getType() == m->getType()) {
+			delete m;
+			return;
+		}
+	}
+	for (int i = 0; i < 4; i++) {
+		if (materia[i] == NULL) {
+			materia[i] = m;
+			return;
+		}
+	}
+	delete m; // If there's no space left in materia[], delete m
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type) {
-	if (type == "cure")
-		return new Cure();
-	else if (type == "ice")
-		return new Ice();
-	return NULL;
+	for (int i = 0; i < 4; i++) {
+		if (materia[i] && materia[i]->getType() == type) {
+			return materia[i]->clone();
+		}
+	}
+	return 0;
 }
